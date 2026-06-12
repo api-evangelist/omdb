@@ -1,0 +1,95 @@
+specificationVersion: '1.0'
+id: omdb-finops
+name: OMDb API FinOps
+description: >
+  Financial operations guidance for teams consuming the OMDb API. OMDb uses a
+  donation/patronage model rather than metered billing, making cost predictable
+  but requiring Patreon subscription management. Primary cost driver is the
+  monthly Patreon pledge level, which also determines daily request quota.
+url: https://www.patreon.com/omdb
+created: '2026-06-12'
+modified: '2026-06-12'
+
+costModel:
+  type: subscription
+  billingCycle: monthly
+  provider: Patreon
+  currency: USD
+  notes: >
+    OMDb does not bill directly. Costs are managed through a Patreon membership.
+    There is no per-request or per-call metered billing. All pricing is a flat
+    monthly Patreon pledge.
+
+tiers:
+  - name: Free
+    monthlyCost: 0.00
+    dailyRequestQuota: 1000
+    posterAPIAccess: false
+  - name: Patron (Minimum)
+    monthlyCost: 1.00
+    dailyRequestQuota: 10000
+    posterAPIAccess: true
+    notes: Exact quota varies; $1/month is the entry-level patron tier.
+  - name: Patron (Higher)
+    monthlyCost: 5.00
+    dailyRequestQuota: 100000
+    posterAPIAccess: true
+    notes: >
+      Higher pledge tiers increase the daily allowance. Exact mapping of pledge
+      amount to quota is managed by the OMDb creator on Patreon.
+
+costDrivers:
+  - name: Monthly Patron Pledge
+    description: Flat monthly subscription via Patreon; the primary and only cost.
+    type: fixed
+    unit: month
+  - name: Daily Request Volume
+    description: >
+      No per-request charge, but daily quota determines which Patreon tier is
+      required. Teams exceeding their current quota must upgrade their pledge.
+    type: threshold
+
+optimizationRecommendations:
+  - title: Cache responses locally
+    description: >
+      OMDb metadata is largely static. Cache lookup results by IMDb ID to avoid
+      redundant API calls and stay within the free or low-cost tier.
+    impact: high
+  - title: Batch searches off-peak
+    description: >
+      Run bulk metadata enrichment jobs during off-peak hours to avoid
+      hitting the daily cap during user-facing traffic windows.
+    impact: medium
+  - title: Use IMDb ID lookups over title searches
+    description: >
+      Direct IMDb ID lookups (?i=) are deterministic and return a single result.
+      Title searches (?s=) may require multiple paginated calls; prefer ID
+      lookups when the IMDb ID is already known.
+    impact: medium
+  - title: Monitor daily quota consumption
+    description: >
+      OMDb does not provide a quota dashboard. Instrument your integration to
+      count outbound API calls and alert before the daily limit is reached.
+    impact: medium
+  - title: Evaluate Patreon tier against usage
+    description: >
+      Compare actual daily request volume against the current pledge tier
+      quarterly. Downgrade if volume does not justify cost; upgrade proactively
+      before hitting the cap in production.
+    impact: low
+
+budgetGuidance:
+  annualEstimates:
+    - scenario: Hobby / side project (free tier)
+      annualCost: 0.00
+      dailyQuota: 1000
+    - scenario: Small production app (minimum patron)
+      annualCost: 12.00
+      dailyQuota: 10000
+    - scenario: Medium production app (higher patron tier)
+      annualCost: 60.00
+      dailyQuota: 100000
+  notes: >
+    Cost is entirely predictable as a flat Patreon subscription. There is no
+    surprise overage billing. If the daily quota is exhausted, requests fail
+    with a 401 error until the next UTC midnight reset.

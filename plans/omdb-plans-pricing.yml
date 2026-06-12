@@ -1,0 +1,58 @@
+specificationVersion: '0.1'
+id: omdb-plans-pricing
+name: OMDb API Plans & Pricing
+description: >
+  OMDb operates a donation-based model via Patreon. A free tier is available to
+  anyone who registers an API key. Poster API access and higher daily request
+  allowances require a Patreon membership starting at $1/month.
+url: https://www.omdbapi.com/apikey.aspx
+created: '2026-06-12'
+modified: '2026-06-12'
+
+plans:
+
+  - name: Free
+    description: >
+      Standard free API key available to anyone. Suitable for personal projects,
+      prototyping, and low-volume applications.
+    url: https://www.omdbapi.com/apikey.aspx
+    price:
+      amount: 0
+      currency: USD
+      period: month
+    features:
+      - Movie and series metadata lookup by title or IMDb ID
+      - Full-text search across titles
+      - JSON and XML response formats
+      - JSONP callback support
+      - Short and full plot descriptions
+      - Aggregated ratings (IMDb, Rotten Tomatoes, Metacritic)
+    limits:
+      requests:
+        daily: 1000
+    notes: Poster API not included.
+
+  - name: Patron
+    description: >
+      Patreon membership unlocks the Poster API and significantly higher daily
+      request allowances. Minimum pledge is $1/month; higher pledge levels
+      increase daily limits. Exact per-tier limits are set by the creator and
+      subject to change on the Patreon page.
+    url: https://www.patreon.com/omdb
+    price:
+      amount: 1
+      currency: USD
+      period: month
+      notes: Starting price; higher tiers available at greater monthly amounts.
+    features:
+      - All Free tier features
+      - Poster API access (280,000+ posters, up to 2000x3000 px, updated daily)
+      - Higher daily request limits proportional to pledge level
+    limits:
+      requests:
+        daily: 100000
+        notes: >
+          Exact limit depends on patron tier. Minimum $1/month provides
+          elevated limits above the free 1,000/day; higher pledge levels
+          increase the allowance further, up to reported values of 100,000+
+          requests/day for higher tiers.

@@ -1,0 +1,84 @@
+aid: omdb
+name: OMDb
+description: >
+  Open Movie Database REST API providing movie and TV show metadata, ratings,
+  poster images, and episode data from a community-maintained database. Supports
+  lookup by IMDb ID or title, full-text search, and a dedicated Poster API for
+  high-resolution cover art available to patrons.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+tags:
+  - Movies
+  - Television
+  - Entertainment
+  - Metadata
+  - Ratings
+  - Posters
+  - IMDb
+  - Open Data
+
+apis:
+  - name: OMDb API
+    description: >
+      RESTful web service returning movie, series, and episode metadata sourced
+      from IMDb identifiers or title searches. Returns title, year, genre,
+      director, cast, ratings (IMDb, Rotten Tomatoes, Metacritic), plot, and
+      more in JSON or XML format.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.omdbapi.com/
+    baseURL: https://www.omdbapi.com/
+    tags:
+      - Movies
+      - Television
+      - Metadata
+      - Ratings
+    properties:
+      - type: Documentation
+        url: https://www.omdbapi.com/
+      - type: OpenAPI
+        url: https://www.omdbapi.com/swagger.json
+
+  - name: OMDb Poster API
+    description: >
+      Dedicated image endpoint returning high-resolution movie and TV show
+      poster art (up to 2000×3000 px) for over 280,000 titles, updated daily.
+      Access is restricted to Patreon patrons.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.omdbapi.com/
+    baseURL: https://img.omdbapi.com/
+    tags:
+      - Posters
+      - Images
+      - Movies
+      - Television
+    properties:
+      - type: Documentation
+        url: https://www.omdbapi.com/
+
+common:
+  - type: Website
+    url: https://www.omdbapi.com/
+  - type: Documentation
+    url: https://www.omdbapi.com/
+  - type: GitHub
+    url: https://github.com/omdbapi/OMDb-API
+  - type: Pricing
+    url: https://www.omdbapi.com/apikey.aspx
+  - type: Plans
+    url: plans/omdb-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/omdb-rate-limits.yml
+  - type: FinOps
+    url: finops/omdb-finops.yml
+  - type: Signup
+    url: https://www.omdbapi.com/apikey.aspx
+  - type: Patreon
+    url: https://www.patreon.com/omdb
+
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,64 @@
+specificationVersion: '0.1'
+id: omdb-rate-limits
+name: OMDb API Rate Limits
+description: >
+  OMDb enforces daily request quotas tied to API key tier. Free keys are capped
+  at 1,000 requests per day. Patreon patrons receive elevated daily limits.
+  There is no documented per-minute or per-second burst limit in official
+  documentation, though community reports indicate approximately 100 calls per
+  60 seconds per connection for sustained bursting.
+url: https://www.omdbapi.com/
+created: '2026-06-12'
+modified: '2026-06-12'
+
+limits:
+
+  - scope: free-tier
+    name: Free Daily Request Limit
+    description: >
+      API keys registered without a Patreon membership are limited to 1,000
+      requests per calendar day. The counter resets at midnight UTC.
+    window:
+      unit: day
+      value: 1
+    quota: 1000
+    enforcement: hard
+    resetPolicy: midnight-utc
+    errorResponse:
+      httpStatus: 401
+      message: "Request limit reached!"
+    notes: >
+      Exceeding the limit returns a 401 error with the message
+      "Request limit reached!" Users must wait for the daily reset or
+      upgrade to a Patreon tier.
+
+  - scope: patron-tier
+    name: Patron Daily Request Limit
+    description: >
+      Patreon patrons receive a higher daily request allowance. The exact
+      value scales with pledge level. Community reports indicate allowances
+      up to 100,000 requests/day for higher pledge levels.
+    window:
+      unit: day
+      value: 1
+    quota: 100000
+    enforcement: hard
+    resetPolicy: midnight-utc
+    notes: >
+      Exact quota depends on active Patreon tier. Poster API requests
+      (img.omdbapi.com) count separately toward the patron's daily limit.
+
+  - scope: connection
+    name: Sustained Burst Rate
+    description: >
+      Informal community-observed limit of approximately 100 requests per
+      60-second window per connection. Not formally documented by OMDb.
+    window:
+      unit: second
+      value: 60
+    quota: 100
+    enforcement: soft
+    notes: >
+      This limit is derived from community observation and is not part of
+      official OMDb documentation. Exceeding this rate may result in
+      temporary throttling.
