@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/omdb/main/json-schema/omdb-search-result.json",
+  "title": "OMDb Search Result",
+  "description": "Paginated search results returned by the OMDb API ?s= endpoint.",
+  "type": "object",
+  "properties": {
+    "Search": {
+      "type": "array",
+      "description": "Array of up to 10 matching titles for the requested page.",
+      "items": {
+        "$ref": "#/$defs/SearchResultItem"
+      }
+    },
+    "totalResults": {
+      "type": "string",
+      "description": "Total number of results across all pages."
+    },
+    "Response": {
+      "type": "string",
+      "enum": ["True", "False"],
+      "description": "Whether the API call succeeded."
+    },
+    "Error": {
+      "type": "string",
+      "description": "Human-readable error message when Response is 'False'."
+    }
+  },
+  "required": ["Response"],
+  "$defs": {
+    "SearchResultItem": {
+      "type": "object",
+      "description": "Condensed title record included in search results.",
+      "properties": {
+        "Title": {
+          "type": "string",
+          "description": "Title of the movie or series."
+        },
+        "Year": {
+          "type": "string",
+          "description": "Year of release."
+        },
+        "imdbID": {
+          "type": "string",
+          "pattern": "^tt\\d{7,8}$",
+          "description": "Unique IMDb identifier."
+        },
+        "Type": {
+          "type": "string",
+          "enum": ["movie", "series", "episode"],
+          "description": "Content type."
+        },
+        "Poster": {
+          "type": "string",
+          "description": "URL of the poster image, or 'N/A'."
+        }
+      },
+      "required": ["Title", "Year", "imdbID", "Type", "Poster"]
+    }
+  }
+}

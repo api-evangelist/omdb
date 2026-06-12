@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/omdb/main/json-schema/omdb-title-result.json",
+  "title": "OMDb Title Result",
+  "description": "Full metadata returned by the OMDb API for a single movie, series, or episode.",
+  "type": "object",
+  "properties": {
+    "Title": {
+      "type": "string",
+      "description": "Title of the movie or series."
+    },
+    "Year": {
+      "type": "string",
+      "description": "Year of release, or year range for a series (e.g. '2013–2020')."
+    },
+    "Rated": {
+      "type": "string",
+      "description": "MPAA or equivalent content rating (e.g. PG-13, TV-MA)."
+    },
+    "Released": {
+      "type": "string",
+      "description": "Theatrical release date formatted as 'DD Mon YYYY'."
+    },
+    "Runtime": {
+      "type": "string",
+      "description": "Runtime in minutes (e.g. '148 min')."
+    },
+    "Genre": {
+      "type": "string",
+      "description": "Comma-separated list of genres."
+    },
+    "Director": {
+      "type": "string",
+      "description": "Director name(s), comma-separated."
+    },
+    "Writer": {
+      "type": "string",
+      "description": "Writer name(s), comma-separated."
+    },
+    "Actors": {
+      "type": "string",
+      "description": "Top-billed cast, comma-separated."
+    },
+    "Plot": {
+      "type": "string",
+      "description": "Short or full plot synopsis depending on the 'plot' query parameter."
+    },
+    "Language": {
+      "type": "string",
+      "description": "Languages spoken in the title, comma-separated."
+    },
+    "Country": {
+      "type": "string",
+      "description": "Country or countries of origin, comma-separated."
+    },
+    "Awards": {
+      "type": "string",
+      "description": "Summary of award wins and nominations."
+    },
+    "Poster": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the poster image, or 'N/A'."
+    },
+    "Ratings": {
+      "type": "array",
+      "description": "Ratings from multiple sources.",
+      "items": {
+        "$ref": "#/$defs/Rating"
+      }
+    },
+    "Metascore": {
+      "type": "string",
+      "description": "Metacritic score 0-100, or 'N/A'."
+    },
+    "imdbRating": {
+      "type": "string",
+      "description": "IMDb weighted average rating 0.0-10.0, or 'N/A'."
+    },
+    "imdbVotes": {
+      "type": "string",
+      "description": "Number of IMDb votes, formatted with commas, or 'N/A'."
+    },
+    "imdbID": {
+      "type": "string",
+      "pattern": "^tt\\d{7,8}$",
+      "description": "Unique IMDb identifier (e.g. tt1375666)."
+    },
+    "Type": {
+      "type": "string",
+      "enum": ["movie", "series", "episode"],
+      "description": "Content type."
+    },
+    "DVD": {
+      "type": "string",
+      "description": "DVD release date or 'N/A'."
+    },
+    "BoxOffice": {
+      "type": "string",
+      "description": "US theatrical box office gross or 'N/A'."
+    },
+    "Production": {
+      "type": "string",
+      "description": "Production company or 'N/A'."
+    },
+    "Website": {
+      "type": "string",
+      "description": "Official website URL or 'N/A'."
+    },
+    "Response": {
+      "type": "string",
+      "enum": ["True", "False"],
+      "description": "Whether the API call succeeded."
+    },
+    "Error": {
+      "type": "string",
+      "description": "Human-readable error message when Response is 'False'."
+    }
+  },
+  "required": ["Title", "imdbID", "Type", "Response"],
+  "$defs": {
+    "Rating": {
+      "type": "object",
+      "description": "A rating entry from a specific aggregator.",
+      "properties": {
+        "Source": {
+          "type": "string",
+          "description": "Name of the ratings source."
+        },
+        "Value": {
+          "type": "string",
+          "description": "Rating value in the source's native format."
+        }
+      },
+      "required": ["Source", "Value"]
+    }
+  }
+}

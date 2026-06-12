@@ -1,0 +1,132 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "omdb": "https://www.omdbapi.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "Year": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:string"
+    },
+    "Rated": {
+      "@id": "schema:contentRating",
+      "@type": "xsd:string"
+    },
+    "Released": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:string"
+    },
+    "Runtime": {
+      "@id": "schema:duration",
+      "@type": "xsd:string"
+    },
+    "Genre": {
+      "@id": "schema:genre",
+      "@type": "xsd:string"
+    },
+    "Director": {
+      "@id": "schema:director",
+      "@type": "xsd:string"
+    },
+    "Writer": {
+      "@id": "schema:author",
+      "@type": "xsd:string"
+    },
+    "Actors": {
+      "@id": "schema:actor",
+      "@type": "xsd:string"
+    },
+    "Plot": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "Language": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    },
+    "Country": {
+      "@id": "schema:countryOfOrigin",
+      "@type": "xsd:string"
+    },
+    "Awards": {
+      "@id": "omdb:awards",
+      "@type": "xsd:string"
+    },
+    "Poster": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "Ratings": {
+      "@id": "schema:aggregateRating",
+      "@container": "@set"
+    },
+    "Source": {
+      "@id": "schema:ratingCount",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "schema:ratingValue",
+      "@type": "xsd:string"
+    },
+    "Metascore": {
+      "@id": "omdb:metascore",
+      "@type": "xsd:string"
+    },
+    "imdbRating": {
+      "@id": "omdb:imdbRating",
+      "@type": "xsd:string"
+    },
+    "imdbVotes": {
+      "@id": "omdb:imdbVotes",
+      "@type": "xsd:string"
+    },
+    "imdbID": {
+      "@id": "omdb:imdbID",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "schema:additionalType",
+      "@type": "xsd:string"
+    },
+    "DVD": {
+      "@id": "omdb:dvdReleaseDate",
+      "@type": "xsd:string"
+    },
+    "BoxOffice": {
+      "@id": "omdb:boxOffice",
+      "@type": "xsd:string"
+    },
+    "Production": {
+      "@id": "schema:productionCompany",
+      "@type": "xsd:string"
+    },
+    "Website": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "Response": {
+      "@id": "omdb:response",
+      "@type": "xsd:string"
+    },
+    "Error": {
+      "@id": "omdb:error",
+      "@type": "xsd:string"
+    },
+    "totalResults": {
+      "@id": "omdb:totalResults",
+      "@type": "xsd:string"
+    },
+    "Search": {
+      "@id": "omdb:searchResults",
+      "@container": "@set"
+    },
+    "Movie": "schema:Movie",
+    "TVSeries": "schema:TVSeries",
+    "TVEpisode": "schema:TVEpisode"
+  }
+}

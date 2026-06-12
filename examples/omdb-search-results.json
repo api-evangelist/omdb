@@ -1,0 +1,41 @@
+{
+  "Search": [
+    {
+      "Title": "Batman Begins",
+      "Year": "2005",
+      "imdbID": "tt0372784",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZDM4OGU1OWEtYjQ4OC00MDQ2LThjOWQtNmM2ODBlZWJjN2I3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Dark Knight",
+      "Year": "2008",
+      "imdbID": "tt0468569",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Dark Knight Rises",
+      "Year": "2012",
+      "imdbID": "tt1345836",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Batman v Superman: Dawn of Justice",
+      "Year": "2016",
+      "imdbID": "tt2975590",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYThjYWMxM2QtMjE2My00NDYyLThhMDgtZmNiMzcyZTZhZWRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Batman",
+      "Year": "1989",
+      "imdbID": "tt0096895",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "521",
+  "Response": "True"
+}

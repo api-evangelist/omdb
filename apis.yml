@@ -41,6 +41,15 @@ apis:
         url: https://www.omdbapi.com/
       - type: OpenAPI
         url: https://www.omdbapi.com/swagger.json
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/openapi/omdb-api-openapi.yml
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-title-result.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-search-result.json
 
   - name: OMDb Poster API
     description: >
@@ -78,6 +87,12 @@ common:
     url: https://www.omdbapi.com/apikey.aspx
   - type: Patreon
     url: https://www.patreon.com/omdb
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/vocabulary/omdb-vocabulary.yml
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-ld/omdb-context.jsonld
 
 maintainers:
   - name: Kin Lane

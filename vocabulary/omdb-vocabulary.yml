@@ -1,0 +1,196 @@
+vocabulary:
+  name: OMDb Vocabulary
+  description: >
+    Domain terms and concepts used across the OMDb API for movie, series,
+    and episode metadata, ratings, and search.
+  version: '1.0'
+  source: https://www.omdbapi.com/
+
+terms:
+
+  - term: imdbID
+    label: IMDb ID
+    definition: >
+      The unique identifier assigned by the Internet Movie Database (IMDb) to
+      every title. Always starts with 'tt' followed by 7-8 digits
+      (e.g. tt1375666).
+    example: tt1375666
+
+  - term: Title
+    label: Title
+    definition: >
+      The official release title of the movie, TV series, or episode as
+      listed on IMDb.
+    example: Inception
+
+  - term: Year
+    label: Year
+    definition: >
+      The year of first release. For ongoing or completed series, this may be a
+      range (e.g. '2013–2020').
+    example: '2010'
+
+  - term: Rated
+    label: Content Rating
+    definition: >
+      The MPAA content rating for theatrical releases (G, PG, PG-13, R, NC-17)
+      or the TV content rating (TV-Y, TV-G, TV-PG, TV-14, TV-MA) for series.
+    example: PG-13
+
+  - term: Released
+    label: Release Date
+    definition: >
+      The theatrical or streaming release date formatted as 'DD Mon YYYY'.
+    example: 16 Jul 2010
+
+  - term: Runtime
+    label: Runtime
+    definition: >
+      The total running time of the title expressed as 'NNN min'.
+    example: 148 min
+
+  - term: Genre
+    label: Genre
+    definition: >
+      One or more genre categories assigned to the title, comma-separated.
+      Common values include Action, Comedy, Drama, Horror, Sci-Fi, Thriller.
+    example: Action, Adventure, Sci-Fi
+
+  - term: Director
+    label: Director
+    definition: >
+      The name(s) of the director(s), comma-separated.
+    example: Christopher Nolan
+
+  - term: Writer
+    label: Writer
+    definition: >
+      The name(s) of the screenwriter(s) or story writers, comma-separated.
+    example: Christopher Nolan
+
+  - term: Actors
+    label: Cast
+    definition: >
+      Top-billed cast members, comma-separated.
+    example: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page
+
+  - term: Plot
+    label: Plot
+    definition: >
+      A short or full synopsis of the title. Controlled by the 'plot' query
+      parameter — 'short' (default) or 'full'.
+    example: >
+      A thief who steals corporate secrets through the use of dream-sharing
+      technology is given the inverse task of planting an idea.
+
+  - term: Language
+    label: Language
+    definition: >
+      Languages spoken in the title, comma-separated.
+    example: English, Japanese, French
+
+  - term: Country
+    label: Country
+    definition: >
+      Country or countries of origin for the production, comma-separated.
+    example: United States, United Kingdom
+
+  - term: Awards
+    label: Awards
+    definition: >
+      A summary of the title's award history including Oscar wins/nominations
+      and total wins/nominations counts.
+    example: Won 4 Oscars. 157 wins & 220 nominations total
+
+  - term: Poster
+    label: Poster URL
+    definition: >
+      A URL pointing to the poster image hosted on Amazon's CDN. May return
+      'N/A' if no poster is available. High-resolution posters (up to
+      2000×3000 px) are available via the OMDb Poster API for patrons.
+    example: https://m.media-amazon.com/images/M/...
+
+  - term: Ratings
+    label: Ratings
+    definition: >
+      An array of rating objects from third-party aggregators. Each object
+      contains a Source (e.g. 'Internet Movie Database', 'Rotten Tomatoes',
+      'Metacritic') and a Value in that source's native format.
+
+  - term: Metascore
+    label: Metascore
+    definition: >
+      The Metacritic weighted average review score, on a scale of 0-100.
+      Returns 'N/A' if unavailable.
+    example: '74'
+
+  - term: imdbRating
+    label: IMDb Rating
+    definition: >
+      The IMDb weighted-average user rating on a scale of 0.0-10.0.
+      Returns 'N/A' if fewer than five votes have been cast.
+    example: '8.8'
+
+  - term: imdbVotes
+    label: IMDb Vote Count
+    definition: >
+      The number of user votes contributing to the imdbRating, formatted with
+      comma-thousands separators. Returns 'N/A' if unavailable.
+    example: '2,300,000'
+
+  - term: Type
+    label: Content Type
+    definition: >
+      The category of the title. One of 'movie', 'series', or 'episode'.
+    values:
+      - movie
+      - series
+      - episode
+
+  - term: Response
+    label: Response Status
+    definition: >
+      A boolean string indicating whether the API call returned a result.
+      'True' on success, 'False' when no match is found or an error occurs.
+    values:
+      - 'True'
+      - 'False'
+
+  - term: Error
+    label: Error Message
+    definition: >
+      A human-readable error description returned alongside Response 'False'.
+      Common values include 'Movie not found!', 'Incorrect IMDb ID.',
+      and 'No API key provided.'
+
+  - term: totalResults
+    label: Total Results
+    definition: >
+      The total number of search results across all pages for a ?s= query.
+      Each page returns up to 10 results.
+
+  - term: page
+    label: Page Number
+    definition: >
+      The 1-based page index for paginated ?s= search results. Valid range
+      is 1-100. Defaults to 1 if omitted.
+
+  - term: BoxOffice
+    label: Box Office
+    definition: >
+      The total US theatrical gross revenue for a movie, formatted as a
+      dollar-denominated string (e.g. '$292,576,195'). Returns 'N/A' if
+      unavailable.
+
+  - term: DVD
+    label: DVD Release Date
+    definition: >
+      The home-video (DVD/Blu-ray) release date formatted as 'DD Mon YYYY',
+      or 'N/A' if unavailable.
+
+  - term: apikey
+    label: API Key
+    definition: >
+      A personal access key required for all requests to the OMDb API. Free
+      keys support up to 1,000 daily requests. Patron keys (via Patreon) have
+      higher limits and access to the Poster API.
