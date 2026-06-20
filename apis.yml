@@ -6,7 +6,7 @@ description: >
   lookup by IMDb ID or title, full-text search, and a dedicated Poster API for
   high-resolution cover art available to patrons.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
@@ -28,7 +28,7 @@ apis:
       from IMDb identifiers or title searches. Returns title, year, genre,
       director, cast, ratings (IMDb, Rotten Tomatoes, Metacritic), plot, and
       more in JSON or XML format.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.omdbapi.com/
     baseURL: https://www.omdbapi.com/
     tags:
@@ -56,7 +56,7 @@ apis:
       Dedicated image endpoint returning high-resolution movie and TV show
       poster art (up to 2000×3000 px) for over 280,000 titles, updated daily.
       Access is restricted to Patreon patrons.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.omdbapi.com/
     baseURL: https://img.omdbapi.com/
     tags:
