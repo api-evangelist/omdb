@@ -69,6 +69,10 @@ apis:
         url: https://www.omdbapi.com/
 
 common:
+  - type: DomainSecurity
+    url: security/omdb-domain-security.yml
+  - type: Authentication
+    url: authentication/omdb-authentication.yml
   - type: Website
     url: https://www.omdbapi.com/
   - type: Documentation

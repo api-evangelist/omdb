@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.omdbapi.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 18:44:29 2026 GMT
+  hsts: false
+- host: img.omdbapi.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 24 18:44:29 2026 GMT
+  hsts: false
+domains:
+- domain: omdbapi.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
