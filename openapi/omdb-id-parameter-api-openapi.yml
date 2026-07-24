@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: OMDb ID Parameter API
+  description: 'Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx
+
+    '
+  version: '1.0'
+  contact:
+    email: bfritz@fadingsignal.com
+  license:
+    name: CC BY-NC 4.0
+    url: https://creativecommons.org/licenses/by-nc/4.0/
+  termsOfService: https://omdbapi.com/legal.htm
+servers:
+- url: https://www.omdbapi.com
+  description: OMDb API
+security:
+- APIKeyQueryParam: []
+tags:
+- name: ID Parameter
+paths:
+  /?i:
+    get:
+      summary: ID lookup — returns a single result based on the IMDb ID provided
+      description: 'Returns full metadata for a single title identified by its IMDb ID (e.g. tt0000001).
+
+        '
+      operationId: getById
+      tags:
+      - ID Parameter
+      parameters:
+      - name: i
+        in: query
+        description: A valid IMDb ID (e.g. tt0000001)
+        required: true
+        schema:
+          type: string
+          pattern: ^tt\d{7,8}$
+        example: tt1375666
+      - name: plot
+        in: query
+        description: Return short or full plot
+        required: false
+        schema:
+          type: string
+          enum:
+          - short
+          - full
+        default: short
+      - name: r
+        in: query
+        description: The response type to return
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+        default: json
+      - name: callback
+        in: query
+        description: JSONP callback name
+        required: false
+        schema:
+          type: string
+      - name: apikey
+        in: query
+        description: API key (may also be supplied via security scheme)
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation — movie or series metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TitleResult'
+        '401':
+          description: Not authenticated — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    ErrorResult:
+      type: object
+      description: Error response returned for authentication failures
+      properties:
+        Response:
+          type: string
+          description: Always "False" for errors
+          enum:
+          - 'False'
+          example: 'False'
+        Error:
+          type: string
+          description: Human-readable error message
+          example: No API key provided.
+    Rating:
+      type: object
+      description: A rating from a specific source (IMDb, Rotten Tomatoes, Metacritic, etc.)
+      properties:
+        Source:
+          type: string
+          description: Name of the ratings source
+          example: Internet Movie Database
+        Value:
+          type: string
+          description: Rating value in the source's native format
+          example: 8.8/10
+    TitleResult:
+      type: object
+      description: Full metadata for a single movie, series, or episode
+      properties:
+        Title:
+          type: string
+          description: Title of the movie or series
+          example: Inception
+        Year:
+          type: string
+          description: Year of release (or range for series)
+          example: '2010'
+        Rated:
+          type: string
+          description: MPAA or equivalent content rating
+          example: PG-13
+        Released:
+          type: string
+          description: Release date (e.g. "16 Jul 2010")
+          example: 16 Jul 2010
+        Runtime:
+          type: string
+          description: Runtime in minutes (e.g. "148 min")
+          example: 148 min
+        Genre:
+          type: string
+          description: Comma-separated list of genres
+          example: Action, Adventure, Sci-Fi
+        Director:
+          type: string
+          description: Director name(s)
+          example: Christopher Nolan
+        Writer:
+          type: string
+          description: Writer name(s)
+          example: Christopher Nolan
+        Actors:
+          type: string
+          description: Comma-separated top-billed cast
+          example: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page
+        Plot:
+          type: string
+          description: Short or full plot description
+        Language:
+          type: string
+          description: Comma-separated languages spoken
+          example: English, Japanese, French
+        Country:
+          type: string
+          description: Country or countries of origin
+          example: United States, United Kingdom
+        Awards:
+          type: string
+          description: Award wins and nominations summary
+          example: Won 4 Oscars. 157 wins & 220 nominations total
+        Poster:
+          type: string
+          format: uri
+          description: URL of the poster image
+        Ratings:
+          type: array
+          description: Ratings from multiple sources
+          items:
+            $ref: '#/components/schemas/Rating'
+        Metascore:
+          type: string
+          description: Metacritic score (0-100)
+          example: '74'
+        imdbRating:
+          type: string
+          description: IMDb rating (0.0-10.0)
+          example: '8.8'
+        imdbVotes:
+          type: string
+          description: Number of IMDb votes (formatted with commas)
+          example: 2,300,000
+        imdbID:
+          type: string
+          description: IMDb unique identifier
+          pattern: ^tt\d{7,8}$
+          example: tt1375666
+        Type:
+          type: string
+          description: Type of title
+          enum:
+          - movie
+          - series
+          - episode
+          example: movie
+        DVD:
+          type: string
+          description: DVD release date
+          example: 07 Dec 2010
+        BoxOffice:
+          type: string
+          description: US box office gross
+          example: $292,576,195
+        Production:
+          type: string
+          description: Production company
+        Website:
+          type: string
+          description: Official website URL or N/A
+        Response:
+          type: string
+          description: Whether the query succeeded
+          enum:
+          - 'True'
+          - 'False'
+          example: 'True'
+        Error:
+          type: string
+          description: Error message (present when Response is False)
+  securitySchemes:
+    APIKeyQueryParam:
+      type: apiKey
+      name: apikey
+      in: query
+      description: API key obtained from https://www.omdbapi.com/apikey.aspx
+externalDocs:
+  description: OMDb API Documentation
+  url: https://www.omdbapi.com/
