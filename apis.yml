@@ -6,7 +6,20 @@ description: >
   lookup by IMDb ID or title, full-text search, and a dedicated Poster API for
   high-resolution cover art available to patrons.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/omdb.png
 url: https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
@@ -22,52 +35,75 @@ tags:
   - Open Data
 
 apis:
-  - name: OMDb API
-    description: >
-      RESTful web service returning movie, series, and episode metadata sourced
-      from IMDb identifiers or title searches. Returns title, year, genre,
-      director, cast, ratings (IMDb, Rotten Tomatoes, Metacritic), plot, and
-      more in JSON or XML format.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.omdbapi.com/
-    baseURL: https://www.omdbapi.com/
-    tags:
-      - Movies
-      - Television
-      - Metadata
-      - Ratings
-    properties:
-      - type: Documentation
-        url: https://www.omdbapi.com/
-      - type: OpenAPI
-        url: https://www.omdbapi.com/swagger.json
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/openapi/omdb-api-openapi.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-title-result.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-search-result.json
-
-  - name: OMDb Poster API
-    description: >
-      Dedicated image endpoint returning high-resolution movie and TV show
-      poster art (up to 2000×3000 px) for over 280,000 titles, updated daily.
-      Access is restricted to Patreon patrons.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.omdbapi.com/
-    baseURL: https://img.omdbapi.com/
-    tags:
-      - Posters
-      - Images
-      - Movies
-      - Television
-    properties:
-      - type: Documentation
-        url: https://www.omdbapi.com/
-
+- name: OMDb Poster API
+  description: >
+    Dedicated image endpoint returning high-resolution movie and TV show poster art (up to 2000×3000 px)
+    for over 280,000 titles, updated daily. Access is restricted to Patreon patrons.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.omdbapi.com/
+  baseURL: https://img.omdbapi.com/
+  tags:
+  - Posters
+  - Images
+  - Movies
+  - Television
+  properties:
+  - type: Documentation
+    url: https://www.omdbapi.com/
+- aid: omdb:omdb-id-parameter-api
+  name: OMDb ID Parameter API
+  description: The ID Parameter API from OMDb — 1 operation(s) for id parameter.
+  humanURL: https://www.omdbapi.com/
+  baseURL: https://www.omdbapi.com/
+  tags:
+  - ID Parameter
+  properties:
+  - type: OpenAPI
+    url: openapi/omdb-id-parameter-api-openapi.yml
+  - type: Documentation
+    url: https://www.omdbapi.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-title-result.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-search-result.json
+- aid: omdb:omdb-search-parameter-api
+  name: OMDb Search Parameter API
+  description: The Search Parameter API from OMDb — 1 operation(s) for search parameter.
+  humanURL: https://www.omdbapi.com/
+  baseURL: https://www.omdbapi.com/
+  tags:
+  - Search Parameter
+  properties:
+  - type: OpenAPI
+    url: openapi/omdb-search-parameter-api-openapi.yml
+  - type: Documentation
+    url: https://www.omdbapi.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-title-result.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-search-result.json
+- aid: omdb:omdb-title-parameter-api
+  name: OMDb Title Parameter API
+  description: The Title Parameter API from OMDb — 1 operation(s) for title parameter.
+  humanURL: https://www.omdbapi.com/
+  baseURL: https://www.omdbapi.com/
+  tags:
+  - Title Parameter
+  properties:
+  - type: OpenAPI
+    url: openapi/omdb-title-parameter-api-openapi.yml
+  - type: Documentation
+    url: https://www.omdbapi.com/
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-title-result.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/json-schema/omdb-search-result.json
 common:
   - type: AgenticAccess
     url: agentic-access/omdb-agentic-access.yml
