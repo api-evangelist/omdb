@@ -1,0 +1,18 @@
+{
+  "provider": "omdb",
+  "sources": [
+    "omdb-id-parameter-api-openapi.yml",
+    "omdb-search-parameter-api-openapi.yml",
+    "omdb-title-parameter-api-openapi.yml"
+  ],
+  "outputs": [
+    "omdb-id-parameter-api-openapi.yml",
+    "omdb-search-parameter-api-openapi.yml",
+    "omdb-title-parameter-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

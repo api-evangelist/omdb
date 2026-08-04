@@ -1,0 +1,500 @@
+openapi: 3.0.3
+info:
+  title: OMDb API
+  description: >
+    Open Movie Database REST API providing movie and TV show metadata, ratings,
+    poster images, and episode data from a community-maintained database.
+    Supports lookup by IMDb ID or title, full-text search, and a dedicated
+    Poster API for high-resolution cover art available to patrons.
+    This API requires authorization — get a free key at
+    https://www.omdbapi.com/apikey.aspx
+  version: '1.0'
+  contact:
+    email: bfritz@fadingsignal.com
+  license:
+    name: CC BY-NC 4.0
+    url: https://creativecommons.org/licenses/by-nc/4.0/
+  termsOfService: https://omdbapi.com/legal.htm
+
+externalDocs:
+  description: OMDb API Documentation
+  url: https://www.omdbapi.com/
+
+servers:
+  - url: https://www.omdbapi.com
+    description: OMDb API
+
+security:
+  - APIKeyQueryParam: []
+
+paths:
+  /:
+    get:
+      summary: Title lookup — returns the most popular match for a given title
+      description: >
+        Returns full metadata for the most popular match for the provided
+        title string. Optionally filter by year and type (movie or series).
+      operationId: getByTitle
+      tags:
+        - Title Parameter
+      parameters:
+        - name: t
+          in: query
+          description: Title of movie or series
+          required: true
+          schema:
+            type: string
+          example: Inception
+        - name: y
+          in: query
+          description: Year of release
+          required: false
+          schema:
+            type: integer
+          example: 2010
+        - name: type
+          in: query
+          description: Return movie or series
+          required: false
+          schema:
+            type: string
+            enum:
+              - movie
+              - series
+        - name: plot
+          in: query
+          description: Return short or full plot
+          required: false
+          schema:
+            type: string
+            enum:
+              - short
+              - full
+          default: short
+        - name: r
+          in: query
+          description: The response type to return
+          required: false
+          schema:
+            type: string
+            enum:
+              - json
+              - xml
+          default: json
+        - name: callback
+          in: query
+          description: JSONP callback name
+          required: false
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          description: API key (may also be supplied via security scheme)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation — movie or series metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TitleResult'
+              example:
+                Title: Inception
+                Year: '2010'
+                Rated: PG-13
+                Released: 16 Jul 2010
+                Runtime: 148 min
+                Genre: Action, Adventure, Sci-Fi
+                Director: Christopher Nolan
+                Writer: Christopher Nolan
+                Actors: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page
+                Plot: A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
+                Language: English, Japanese, French
+                Country: United States, United Kingdom
+                Awards: Won 4 Oscars. 157 wins & 220 nominations total
+                Poster: https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg
+                Ratings:
+                  - Source: Internet Movie Database
+                    Value: 8.8/10
+                  - Source: Rotten Tomatoes
+                    Value: 87%
+                  - Source: Metacritic
+                    Value: 74/100
+                Metascore: '74'
+                imdbRating: '8.8'
+                imdbVotes: 2,300,000
+                imdbID: tt1375666
+                Type: movie
+                DVD: 07 Dec 2010
+                BoxOffice: $292,576,195
+                Production: N/A
+                Website: N/A
+                Response: 'True'
+        '401':
+          description: Not authenticated — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+
+  /?i:
+    get:
+      summary: ID lookup — returns a single result based on the IMDb ID provided
+      description: >
+        Returns full metadata for a single title identified by its IMDb ID
+        (e.g. tt0000001).
+      operationId: getById
+      tags:
+        - ID Parameter
+      parameters:
+        - name: i
+          in: query
+          description: A valid IMDb ID (e.g. tt0000001)
+          required: true
+          schema:
+            type: string
+            pattern: '^tt\d{7,8}$'
+          example: tt1375666
+        - name: plot
+          in: query
+          description: Return short or full plot
+          required: false
+          schema:
+            type: string
+            enum:
+              - short
+              - full
+          default: short
+        - name: r
+          in: query
+          description: The response type to return
+          required: false
+          schema:
+            type: string
+            enum:
+              - json
+              - xml
+          default: json
+        - name: callback
+          in: query
+          description: JSONP callback name
+          required: false
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          description: API key (may also be supplied via security scheme)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation — movie or series metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TitleResult'
+        '401':
+          description: Not authenticated — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+
+  /?s:
+    get:
+      summary: Title search — returns an array of results for a given title string
+      description: >
+        Returns a paginated list of titles matching the search string.
+        Results include basic metadata (title, year, type, poster, IMDb ID).
+      operationId: searchByTitle
+      tags:
+        - Search Parameter
+      parameters:
+        - name: s
+          in: query
+          description: Title of movie or series to search for
+          required: true
+          schema:
+            type: string
+          example: Batman
+        - name: y
+          in: query
+          description: Year of release
+          required: false
+          schema:
+            type: integer
+        - name: type
+          in: query
+          description: Return movie or series results
+          required: false
+          schema:
+            type: string
+            enum:
+              - movie
+              - series
+        - name: r
+          in: query
+          description: The response type to return
+          required: false
+          schema:
+            type: string
+            enum:
+              - json
+              - xml
+          default: json
+        - name: page
+          in: query
+          description: Page number to return (results come in sets of 10)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+          default: 1
+        - name: callback
+          in: query
+          description: JSONP callback name
+          required: false
+          schema:
+            type: string
+        - name: apikey
+          in: query
+          description: API key (may also be supplied via security scheme)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation — paginated search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+              example:
+                Search:
+                  - Title: Batman Begins
+                    Year: '2005'
+                    imdbID: tt0372784
+                    Type: movie
+                    Poster: https://m.media-amazon.com/images/M/MV5BZDM4OGU1OWEtYjQ4OC00MDQ2LThjOWQtNmM2ODBlZWJjN2I3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg
+                  - Title: The Dark Knight
+                    Year: '2008'
+                    imdbID: tt0468569
+                    Type: movie
+                    Poster: https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg
+                totalResults: '521'
+                Response: 'True'
+        '401':
+          description: Not authenticated — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+
+components:
+  securitySchemes:
+    APIKeyQueryParam:
+      type: apiKey
+      name: apikey
+      in: query
+      description: API key obtained from https://www.omdbapi.com/apikey.aspx
+
+  schemas:
+    Rating:
+      type: object
+      description: A rating from a specific source (IMDb, Rotten Tomatoes, Metacritic, etc.)
+      properties:
+        Source:
+          type: string
+          description: Name of the ratings source
+          example: Internet Movie Database
+        Value:
+          type: string
+          description: Rating value in the source's native format
+          example: 8.8/10
+
+    TitleResult:
+      type: object
+      description: Full metadata for a single movie, series, or episode
+      properties:
+        Title:
+          type: string
+          description: Title of the movie or series
+          example: Inception
+        Year:
+          type: string
+          description: Year of release (or range for series)
+          example: '2010'
+        Rated:
+          type: string
+          description: MPAA or equivalent content rating
+          example: PG-13
+        Released:
+          type: string
+          description: Release date (e.g. "16 Jul 2010")
+          example: 16 Jul 2010
+        Runtime:
+          type: string
+          description: Runtime in minutes (e.g. "148 min")
+          example: 148 min
+        Genre:
+          type: string
+          description: Comma-separated list of genres
+          example: Action, Adventure, Sci-Fi
+        Director:
+          type: string
+          description: Director name(s)
+          example: Christopher Nolan
+        Writer:
+          type: string
+          description: Writer name(s)
+          example: Christopher Nolan
+        Actors:
+          type: string
+          description: Comma-separated top-billed cast
+          example: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page
+        Plot:
+          type: string
+          description: Short or full plot description
+        Language:
+          type: string
+          description: Comma-separated languages spoken
+          example: English, Japanese, French
+        Country:
+          type: string
+          description: Country or countries of origin
+          example: United States, United Kingdom
+        Awards:
+          type: string
+          description: Award wins and nominations summary
+          example: Won 4 Oscars. 157 wins & 220 nominations total
+        Poster:
+          type: string
+          format: uri
+          description: URL of the poster image
+        Ratings:
+          type: array
+          description: Ratings from multiple sources
+          items:
+            $ref: '#/components/schemas/Rating'
+        Metascore:
+          type: string
+          description: Metacritic score (0-100)
+          example: '74'
+        imdbRating:
+          type: string
+          description: IMDb rating (0.0-10.0)
+          example: '8.8'
+        imdbVotes:
+          type: string
+          description: Number of IMDb votes (formatted with commas)
+          example: '2,300,000'
+        imdbID:
+          type: string
+          description: IMDb unique identifier
+          pattern: '^tt\d{7,8}$'
+          example: tt1375666
+        Type:
+          type: string
+          description: Type of title
+          enum:
+            - movie
+            - series
+            - episode
+          example: movie
+        DVD:
+          type: string
+          description: DVD release date
+          example: 07 Dec 2010
+        BoxOffice:
+          type: string
+          description: US box office gross
+          example: $292,576,195
+        Production:
+          type: string
+          description: Production company
+        Website:
+          type: string
+          description: Official website URL or N/A
+        Response:
+          type: string
+          description: Whether the query succeeded
+          enum:
+            - 'True'
+            - 'False'
+          example: 'True'
+        Error:
+          type: string
+          description: Error message (present when Response is False)
+
+    SearchResultItem:
+      type: object
+      description: Condensed record returned in search results
+      properties:
+        Title:
+          type: string
+          description: Title of the movie or series
+          example: Batman Begins
+        Year:
+          type: string
+          description: Year of release
+          example: '2005'
+        imdbID:
+          type: string
+          description: IMDb unique identifier
+          pattern: '^tt\d{7,8}$'
+          example: tt0372784
+        Type:
+          type: string
+          description: Type of title
+          enum:
+            - movie
+            - series
+            - episode
+          example: movie
+        Poster:
+          type: string
+          format: uri
+          description: URL of the poster image (or "N/A")
+
+    SearchResult:
+      type: object
+      description: Paginated search results container
+      properties:
+        Search:
+          type: array
+          description: Array of matching titles (up to 10 per page)
+          items:
+            $ref: '#/components/schemas/SearchResultItem'
+        totalResults:
+          type: string
+          description: Total number of results across all pages
+          example: '521'
+        Response:
+          type: string
+          description: Whether the query succeeded
+          enum:
+            - 'True'
+            - 'False'
+          example: 'True'
+        Error:
+          type: string
+          description: Error message (present when Response is False)
+
+    ErrorResult:
+      type: object
+      description: Error response returned for authentication failures
+      properties:
+        Response:
+          type: string
+          description: Always "False" for errors
+          enum:
+            - 'False'
+          example: 'False'
+        Error:
+          type: string
+          description: Human-readable error message
+          example: No API key provided.
