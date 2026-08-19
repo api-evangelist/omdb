@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "0a4b5a97-1c68-4a10-a7dc-a763b7abca22",
+      "name": "Search Parameter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc6113f3-b492-4c79-b3ff-31cf7ff92086",
+          "name": "Title search — returns an array of results for a given title string",
+          "request": {
+            "name": "Title search — returns an array of results for a given title string",
+            "description": {
+              "content": "Returns a paginated list of titles matching the search string. Results include basic metadata (title, year, type, poster, IMDb ID).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "s",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "(Required) Title of movie or series to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "y",
+                  "value": "<integer>",
+                  "description": "Year of release"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Return movie or series results"
+                },
+                {
+                  "disabled": false,
+                  "key": "r",
+                  "value": "<string>",
+                  "description": "The response type to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number to return (results come in sets of 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback name"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "API key (may also be supplied via security scheme)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c14c95f-71de-46f8-a46e-06facd5b1d63",
+              "name": "Successful operation — paginated search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "Batman"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Search\": [\n    {\n      \"Title\": \"Batman Begins\",\n      \"Year\": \"2005\",\n      \"imdbID\": \"tt0372784\",\n      \"Type\": \"movie\",\n      \"Poster\": \"https://m.media-amazon.com/images/M/MV5BZDM4OGU1OWEtYjQ4OC00MDQ2LThjOWQtNmM2ODBlZWJjN2I3XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg\"\n    },\n    {\n      \"Title\": \"The Dark Knight\",\n      \"Year\": \"2008\",\n      \"imdbID\": \"tt0468569\",\n      \"Type\": \"movie\",\n      \"Poster\": \"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg\"\n    }\n  ],\n  \"totalResults\": \"521\",\n  \"Response\": \"True\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aabf7bc-c94a-417a-8355-273167332230",
+              "name": "Not authenticated — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "Batman"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": \"False\",\n  \"Error\": \"No API key provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.omdbapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fcfb539d-9073-42b8-85a3-6a5b1702d368",
+    "name": "OMDb ID Parameter Search Parameter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx\n\n\nContact Support:\n Email: bfritz@fadingsignal.com",
+      "type": "text/plain"
+    }
+  }
+}

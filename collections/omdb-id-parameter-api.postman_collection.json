@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "b103a724-fb23-40ea-aa0a-cf7c188c2410",
+      "name": "ID Parameter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "302e8c4a-9fe0-487e-b4c0-eccd8f8cbd92",
+          "name": "ID lookup — returns a single result based on the IMDb ID provided",
+          "request": {
+            "name": "ID lookup — returns a single result based on the IMDb ID provided",
+            "description": {
+              "content": "Returns full metadata for a single title identified by its IMDb ID (e.g. tt0000001).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "i",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "(Required) A valid IMDb ID (e.g. tt0000001)"
+                },
+                {
+                  "disabled": false,
+                  "key": "plot",
+                  "value": "<string>",
+                  "description": "Return short or full plot"
+                },
+                {
+                  "disabled": false,
+                  "key": "r",
+                  "value": "<string>",
+                  "description": "The response type to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback name"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "API key (may also be supplied via security scheme)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43f893a3-21f1-4b3d-98f4-d8ecd830edf7",
+              "name": "Successful operation — movie or series metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "i",
+                      "value": "tt1375666"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Title\": \"Inception\",\n  \"Year\": \"2010\",\n  \"Rated\": \"PG-13\",\n  \"Released\": \"16 Jul 2010\",\n  \"Runtime\": \"148 min\",\n  \"Genre\": \"Action, Adventure, Sci-Fi\",\n  \"Director\": \"Christopher Nolan\",\n  \"Writer\": \"Christopher Nolan\",\n  \"Actors\": \"Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page\",\n  \"Plot\": \"string\",\n  \"Language\": \"English, Japanese, French\",\n  \"Country\": \"United States, United Kingdom\",\n  \"Awards\": \"Won 4 Oscars. 157 wins & 220 nominations total\",\n  \"Poster\": \"https://jjfZRMdwV.fpziI2LMh0NwYk-2auZf-WsSlvcNxG,cJsUHLUSA6momGcsNrse3-oZwuYAYUrc\",\n  \"Ratings\": [\n    {\n      \"Source\": \"Internet Movie Database\",\n      \"Value\": \"8.8/10\"\n    },\n    {\n      \"Source\": \"Internet Movie Database\",\n      \"Value\": \"8.8/10\"\n    }\n  ],\n  \"Metascore\": \"74\",\n  \"imdbRating\": \"8.8\",\n  \"imdbVotes\": \"2,300,000\",\n  \"imdbID\": \"tt1375666\",\n  \"Type\": \"movie\",\n  \"DVD\": \"07 Dec 2010\",\n  \"BoxOffice\": \"$292,576,195\",\n  \"Production\": \"string\",\n  \"Website\": \"string\",\n  \"Response\": \"True\",\n  \"Error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27b91743-36f4-4cd8-8acc-2f60e661f754",
+              "name": "Not authenticated — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "i",
+                      "value": "tt1375666"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": \"False\",\n  \"Error\": \"No API key provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.omdbapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6443f2e5-a522-47e8-9abd-aef0239a4eef",
+    "name": "OMDb ID Parameter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx\n\n\nContact Support:\n Email: bfritz@fadingsignal.com",
+      "type": "text/plain"
+    }
+  }
+}

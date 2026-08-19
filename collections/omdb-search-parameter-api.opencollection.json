@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OMDb ID Parameter Search Parameter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Parameter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Title search — returns an array of results for a given title string",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.omdbapi.com/?s",
+            "params": [
+              {
+                "name": "s",
+                "value": "Batman",
+                "type": "query",
+                "description": "Title of movie or series to search for"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "query",
+                "description": "Year of release"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Return movie or series results"
+              },
+              {
+                "name": "r",
+                "value": "",
+                "type": "query",
+                "description": "The response type to return"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to return (results come in sets of 10)"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback name"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key (may also be supplied via security scheme)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of titles matching the search string. Results include basic metadata (title, year, type, poster, IMDb ID).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

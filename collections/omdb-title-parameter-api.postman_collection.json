@@ -1,0 +1,263 @@
+{
+  "item": [
+    {
+      "id": "4ee3aa76-31ec-4d48-84c1-5a847f329c31",
+      "name": "Title Parameter",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef696d42-f57d-4763-8670-9c800517c135",
+          "name": "Title lookup — returns the most popular match for a given title",
+          "request": {
+            "name": "Title lookup — returns the most popular match for a given title",
+            "description": {
+              "content": "Returns full metadata for the most popular match for the provided title string. Optionally filter by year and type (movie or series).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "(Required) Title of movie or series"
+                },
+                {
+                  "disabled": false,
+                  "key": "y",
+                  "value": "<integer>",
+                  "description": "Year of release"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Return movie or series"
+                },
+                {
+                  "disabled": false,
+                  "key": "plot",
+                  "value": "<string>",
+                  "description": "Return short or full plot"
+                },
+                {
+                  "disabled": false,
+                  "key": "r",
+                  "value": "<string>",
+                  "description": "The response type to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSONP callback name"
+                },
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "API key (may also be supplied via security scheme)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba78068a-4759-444b-9268-595248725919",
+              "name": "Successful operation — movie or series metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "Inception"
+                    },
+                    {
+                      "key": "y",
+                      "value": "2010"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Title\": \"Inception\",\n  \"Year\": \"2010\",\n  \"Rated\": \"PG-13\",\n  \"Released\": \"16 Jul 2010\",\n  \"Runtime\": \"148 min\",\n  \"Genre\": \"Action, Adventure, Sci-Fi\",\n  \"Director\": \"Christopher Nolan\",\n  \"Writer\": \"Christopher Nolan\",\n  \"Actors\": \"Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page\",\n  \"Plot\": \"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.\",\n  \"Language\": \"English, Japanese, French\",\n  \"Country\": \"United States, United Kingdom\",\n  \"Awards\": \"Won 4 Oscars. 157 wins & 220 nominations total\",\n  \"Poster\": \"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg\",\n  \"Ratings\": [\n    {\n      \"Source\": \"Internet Movie Database\",\n      \"Value\": \"8.8/10\"\n    },\n    {\n      \"Source\": \"Rotten Tomatoes\",\n      \"Value\": \"87%\"\n    },\n    {\n      \"Source\": \"Metacritic\",\n      \"Value\": \"74/100\"\n    }\n  ],\n  \"Metascore\": \"74\",\n  \"imdbRating\": \"8.8\",\n  \"imdbVotes\": \"2,300,000\",\n  \"imdbID\": \"tt1375666\",\n  \"Type\": \"movie\",\n  \"DVD\": \"07 Dec 2010\",\n  \"BoxOffice\": \"$292,576,195\",\n  \"Production\": \"N/A\",\n  \"Website\": \"N/A\",\n  \"Response\": \"True\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a0d078c-2708-4780-84c8-1dc19e11796d",
+              "name": "Not authenticated — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "Inception"
+                    },
+                    {
+                      "key": "y",
+                      "value": "2010"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plot",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "r",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": \"False\",\n  \"Error\": \"No API key provided.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.omdbapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e59904e-25e3-4769-bdf6-364173c7c018",
+    "name": "OMDb ID Parameter Title Parameter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx\n\n\nContact Support:\n Email: bfritz@fadingsignal.com",
+      "type": "text/plain"
+    }
+  }
+}

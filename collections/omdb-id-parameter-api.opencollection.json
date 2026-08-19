@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OMDb ID Parameter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ID Parameter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ID lookup — returns a single result based on the IMDb ID provided",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.omdbapi.com/?i",
+            "params": [
+              {
+                "name": "i",
+                "value": "tt1375666",
+                "type": "query",
+                "description": "A valid IMDb ID (e.g. tt0000001)"
+              },
+              {
+                "name": "plot",
+                "value": "",
+                "type": "query",
+                "description": "Return short or full plot"
+              },
+              {
+                "name": "r",
+                "value": "",
+                "type": "query",
+                "description": "The response type to return"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback name"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key (may also be supplied via security scheme)"
+              }
+            ]
+          },
+          "docs": "Returns full metadata for a single title identified by its IMDb ID (e.g. tt0000001).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

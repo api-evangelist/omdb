@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OMDb ID Parameter Title Parameter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Title Parameter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Title lookup — returns the most popular match for a given title",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.omdbapi.com/",
+            "params": [
+              {
+                "name": "t",
+                "value": "Inception",
+                "type": "query",
+                "description": "Title of movie or series"
+              },
+              {
+                "name": "y",
+                "value": "2010",
+                "type": "query",
+                "description": "Year of release"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Return movie or series"
+              },
+              {
+                "name": "plot",
+                "value": "",
+                "type": "query",
+                "description": "Return short or full plot"
+              },
+              {
+                "name": "r",
+                "value": "",
+                "type": "query",
+                "description": "The response type to return"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSONP callback name"
+              },
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key (may also be supplied via security scheme)"
+              }
+            ]
+          },
+          "docs": "Returns full metadata for the most popular match for the provided title string. Optionally filter by year and type (movie or series).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
