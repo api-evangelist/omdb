@@ -44,6 +44,11 @@ apis:
   baseURL: https://img.omdbapi.com/
   tags:
   - Posters
+  - Image
+  - Movies
+  - Television
+  tags_raw:
+  - Posters
   - Images
   - Movies
   - Television
