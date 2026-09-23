@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: OMDb ID Parameter API
-  description: 'Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx
-
-    '
+  description: Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons. This API requires authorization — get a free key at https://www.omdbapi.com/apikey.aspx
   version: '1.0'
   contact:
     email: bfritz@fadingsignal.com
@@ -22,9 +20,7 @@ paths:
   /?i:
     get:
       summary: ID lookup — returns a single result based on the IMDb ID provided
-      description: 'Returns full metadata for a single title identified by its IMDb ID (e.g. tt0000001).
-
-        '
+      description: Returns full metadata for a single title identified by its IMDb ID (e.g. tt0000001).
       operationId: getById
       tags:
       - ID Parameter
@@ -84,20 +80,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ErrorResult:
-      type: object
-      description: Error response returned for authentication failures
-      properties:
-        Response:
-          type: string
-          description: Always "False" for errors
-          enum:
-          - 'False'
-          example: 'False'
-        Error:
-          type: string
-          description: Human-readable error message
-          example: No API key provided.
     Rating:
       type: object
       description: A rating from a specific source (IMDb, Rotten Tomatoes, Metacritic, etc.)
@@ -223,6 +205,20 @@ components:
         Error:
           type: string
           description: Error message (present when Response is False)
+    ErrorResult:
+      type: object
+      description: Error response returned for authentication failures
+      properties:
+        Response:
+          type: string
+          description: Always "False" for errors
+          enum:
+          - 'False'
+          example: 'False'
+        Error:
+          type: string
+          description: Human-readable error message
+          example: No API key provided.
   securitySchemes:
     APIKeyQueryParam:
       type: apiKey

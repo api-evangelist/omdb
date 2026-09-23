@@ -1,9 +1,7 @@
 {
   "provider": "omdb",
   "sources": [
-    "omdb-id-parameter-api-openapi.yml",
-    "omdb-search-parameter-api-openapi.yml",
-    "omdb-title-parameter-api-openapi.yml"
+    "_original/omdb-api-openapi.yml"
   ],
   "outputs": [
     "omdb-id-parameter-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "omdb-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "omdb-api-openapi.yml: declared missing tag: ID Parameter",
+    "omdb-api-openapi.yml: declared missing tag: Search Parameter",
+    "omdb-api-openapi.yml: declared missing tag: Title Parameter",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "omdb-id-parameter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "omdb-search-parameter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "omdb-title-parameter-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
