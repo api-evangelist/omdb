@@ -8,15 +8,19 @@ description: >
 type: Index
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - omdbapi/omdb-api
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
@@ -71,7 +75,6 @@ apis:
   name: OMDb ID Parameter API
   description: The ID Parameter API from OMDb — 1 operation(s) for id parameter.
   humanURL: https://www.omdbapi.com/
-  baseURL: https://www.omdbapi.com/
   tags:
   - ID Parameter
   properties:
@@ -89,7 +92,6 @@ apis:
   name: OMDb Search Parameter API
   description: The Search Parameter API from OMDb — 1 operation(s) for search parameter.
   humanURL: https://www.omdbapi.com/
-  baseURL: https://www.omdbapi.com/
   tags:
   - Search Parameter
   properties:
@@ -107,7 +109,6 @@ apis:
   name: OMDb Title Parameter API
   description: The Title Parameter API from OMDb — 1 operation(s) for title parameter.
   humanURL: https://www.omdbapi.com/
-  baseURL: https://www.omdbapi.com/
   tags:
   - Title Parameter
   properties:
