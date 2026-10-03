@@ -80,18 +80,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    Rating:
+    ErrorResult:
       type: object
-      description: A rating from a specific source (IMDb, Rotten Tomatoes, Metacritic, etc.)
+      description: Error response returned for authentication failures
       properties:
-        Source:
+        Response:
           type: string
-          description: Name of the ratings source
-          example: Internet Movie Database
-        Value:
+          description: Always "False" for errors
+          enum:
+          - 'False'
+          example: 'False'
+        Error:
           type: string
-          description: Rating value in the source's native format
-          example: 8.8/10
+          description: Human-readable error message
+          example: No API key provided.
     TitleResult:
       type: object
       description: Full metadata for a single movie, series, or episode
@@ -205,20 +207,18 @@ components:
         Error:
           type: string
           description: Error message (present when Response is False)
-    ErrorResult:
+    Rating:
       type: object
-      description: Error response returned for authentication failures
+      description: A rating from a specific source (IMDb, Rotten Tomatoes, Metacritic, etc.)
       properties:
-        Response:
+        Source:
           type: string
-          description: Always "False" for errors
-          enum:
-          - 'False'
-          example: 'False'
-        Error:
+          description: Name of the ratings source
+          example: Internet Movie Database
+        Value:
           type: string
-          description: Human-readable error message
-          example: No API key provided.
+          description: Rating value in the source's native format
+          example: 8.8/10
   securitySchemes:
     APIKeyQueryParam:
       type: apiKey
