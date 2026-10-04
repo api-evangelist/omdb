@@ -127,20 +127,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ErrorResult:
-      type: object
-      description: Error response returned for authentication failures
-      properties:
-        Response:
-          type: string
-          description: Always "False" for errors
-          enum:
-          - 'False'
-          example: 'False'
-        Error:
-          type: string
-          description: Human-readable error message
-          example: No API key provided.
     TitleResult:
       type: object
       description: Full metadata for a single movie, series, or episode
@@ -266,6 +252,20 @@ components:
           type: string
           description: Rating value in the source's native format
           example: 8.8/10
+    ErrorResult:
+      type: object
+      description: Error response returned for authentication failures
+      properties:
+        Response:
+          type: string
+          description: Always "False" for errors
+          enum:
+          - 'False'
+          example: 'False'
+        Error:
+          type: string
+          description: Human-readable error message
+          example: No API key provided.
   securitySchemes:
     APIKeyQueryParam:
       type: apiKey
