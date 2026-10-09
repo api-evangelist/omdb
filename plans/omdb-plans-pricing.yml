@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-12 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-12'
 specificationVersion: '0.1'
 id: omdb-plans-pricing
 name: OMDb API Plans & Pricing
@@ -56,3 +61,21 @@ plans:
           elevated limits above the free 1,000/day; higher pledge levels
           increase the allowance further, up to reported values of 100,000+
           requests/day for higher tiers.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Patron
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
