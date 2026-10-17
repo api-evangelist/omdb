@@ -136,6 +136,20 @@ components:
           type: string
           format: uri
           description: URL of the poster image (or "N/A")
+    ErrorResult:
+      type: object
+      description: Error response returned for authentication failures
+      properties:
+        Response:
+          type: string
+          description: Always "False" for errors
+          enum:
+          - 'False'
+          example: 'False'
+        Error:
+          type: string
+          description: Human-readable error message
+          example: No API key provided.
     SearchResult:
       type: object
       description: Paginated search results container
@@ -159,20 +173,6 @@ components:
         Error:
           type: string
           description: Error message (present when Response is False)
-    ErrorResult:
-      type: object
-      description: Error response returned for authentication failures
-      properties:
-        Response:
-          type: string
-          description: Always "False" for errors
-          enum:
-          - 'False'
-          example: 'False'
-        Error:
-          type: string
-          description: Human-readable error message
-          example: No API key provided.
   securitySchemes:
     APIKeyQueryParam:
       type: apiKey
