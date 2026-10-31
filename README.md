@@ -1,4 +1,4 @@
-# OMDb (omdb)
+# OMDb
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,57 +64,154 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-OMDb (Open Movie Database) is a community-maintained REST API providing movie and TV show metadata, ratings, poster images, and episode data. It supports lookup by IMDb ID or title, full-text search, aggregated ratings from IMDb, Rotten Tomatoes, and Metacritic, and a dedicated high-resolution Poster API for Patreon patrons.
+Open Movie Database REST API providing movie and TV show metadata, ratings, poster images, and episode data from a community-maintained database. Supports lookup by IMDb ID or title, full-text search, and a dedicated Poster API for high-resolution cover art available to patrons.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/omdb/refs/heads/main/apis.yml
+**Areas:** Movies · Television · Entertainment · Metadata · Ratings · Posters · IMDb · Open Data
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=omdb-api-evangelist&utm_content=repo
+## OMDb on APIs.io
 
-## Tags
+Everything profiled for OMDb is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/omdb/](https://apis.io/providers/omdb/)** — or go straight to one of the APIs or properties below.
 
-- Movies
-- Television
-- Entertainment
-- Metadata
-- Ratings
-- Posters
-- IMDb
-- Open Data
+### APIs (4)
 
-## APIs
+- [OMDb Poster API](https://apis.io/apis/omdb/omdb-poster-api/) — Dedicated image endpoint returning high-resolution movie and TV show poster art (up to 2000×3000 px) for over 280,000 titles, updated daily. Access is…
+- [OMDb ID Parameter API](https://apis.io/apis/omdb/omdb-id-parameter-api/) — The ID Parameter API from OMDb — 1 operation(s) for id parameter.
+- [OMDb Search Parameter API](https://apis.io/apis/omdb/omdb-search-parameter-api/) — The Search Parameter API from OMDb — 1 operation(s) for search parameter.
+- [OMDb Title Parameter API](https://apis.io/apis/omdb/omdb-title-parameter-api/) — The Title Parameter API from OMDb — 1 operation(s) for title parameter.
 
-| Name | Description | Base URL |
-|------|-------------|----------|
-| OMDb API | Movie, series, and episode metadata by IMDb ID or title search | https://www.omdbapi.com/ |
-| OMDb Poster API | High-resolution poster art for 280,000+ titles (patron only) | https://img.omdbapi.com/ |
+### Published properties
 
-## Plans, Rate Limits, and FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Path |
-|----------|------|
-| Plans & Pricing | [plans/omdb-plans-pricing.yml](plans/omdb-plans-pricing.yml) |
-| Rate Limits | [rate-limits/omdb-rate-limits.yml](rate-limits/omdb-rate-limits.yml) |
-| FinOps | [finops/omdb-finops.yml](finops/omdb-finops.yml) |
+#### Agentic access (1)
 
-OMDb uses a Patreon-based donation model. The free tier allows 1,000 requests/day. Patron tiers (starting at $1/month) unlock the Poster API and higher daily quotas (up to 100,000+ requests/day for higher pledge levels). There is no metered billing; cost is a flat monthly Patreon pledge.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Omdb Agentic Access](https://apis.io/agentic-access/omdb/omdb-agentic-access/)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+#### JSON Schema (2)
 
-## Common Resources
+The data models the API reads and writes.
 
-| Type | URL |
-|------|-----|
-| Website | https://www.omdbapi.com/ |
-| Documentation | https://www.omdbapi.com/ |
-| GitHub | https://github.com/omdbapi/OMDb-API |
-| Pricing / API Key | https://www.omdbapi.com/apikey.aspx |
-| Patreon | https://www.patreon.com/omdb |
+- [OMDb Search Result](https://apis.io/schemas/omdb/omdb-search-result/)
+- [OMDb Title Result](https://apis.io/schemas/omdb/omdb-title-result/)
 
-## Maintainers
+#### JSON-LD (1)
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+Linked-data contexts for the provider's vocabulary.
+
+- [Omdb Context](https://apis.io/jsonld/omdb/omdb-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [OMDb Vocabulary](https://apis.io/vocabularies/omdb/omdb-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Omdb Error Response](https://apis.io/examples/omdb/omdb-error-response/)
+- [Omdb Search Results](https://apis.io/examples/omdb/omdb-search-results/)
+- [Omdb Title By Id](https://apis.io/examples/omdb/omdb-title-by-id/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [OMDb ID Parameter API](https://apis.io/collections/omdb/open-omdb-id-parameter-api/)
+- [OMDb ID Parameter Search Parameter API](https://apis.io/collections/omdb/open-omdb-search-parameter-api/)
+- [OMDb ID Parameter Title Parameter API](https://apis.io/collections/omdb/open-omdb-title-parameter-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [OMDb — jsonschema rules](https://apis.io/rules/omdb/omdb-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Omdb Authentication](https://apis.io/security/omdb/omdb-authentication/)
+- [Omdb Domain Security](https://apis.io/security/omdb/omdb-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Omdb Plans Pricing](https://apis.io/plans/omdb/omdb-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Omdb Rate Limits](https://apis.io/rate-limits/omdb/omdb-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Omdb Finops](https://apis.io/finops/omdb/omdb-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.omdbapi.com/)
+- [Documentation](https://www.omdbapi.com/)
+- [Pricing](https://www.omdbapi.com/apikey.aspx)
+
+## API Evangelist rating
+
+**Kin Score 36.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 62.4 |
+| Contract governance | 23.5 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 28.9 |
+
+**Agent readiness 26.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/omdb/](https://apis.io/providers/omdb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OMDb: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/omdb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
